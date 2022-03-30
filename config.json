@@ -1,0 +1,11 @@
+{
+    "WALLET_PRIVATE_KEY": "4ba8853f8cf0243a3e4e396f4202385f306dea6b015fdeb2bd3de5abf53e83ff",
+    "TEAM_LIST": [],
+    "LENDING_CRAB_SELECTION": 3,
+    "REINFORCE": true,
+    "MAX_LENDING_PRICE": 30,
+    "LENDING_CRAB_MIN_BP": 237,
+    "LICENCE_KEY": "20b8ae1c-3a67-421e-a753-c931f9e30e03",
+    "CRABS_ORDER_BY": "time_point",
+    "LENDING_CRAB_MIN_MP": 75
+}

@@ -1,0 +1,23 @@
+{
+  "name": "crabada-bot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "babel src --out-dir app --copy-files && nexe ./app/index.js --name crabada-bot && nexe -t windows ./app/index.js --name crabada-bot",
+    "prebuild": "rm -rf app && rm -rf crabada-bot && rm -rf crabada-bot.exe",
+    "start": "babel src --out-dir app --copy-files && node ./app/index.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "axios": "^0.25.0",
+    "chalk": "^4.1.2",
+    "ethers": "^5.5.3",
+    "google-spreadsheet": "^3.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0"
+  }
+}
