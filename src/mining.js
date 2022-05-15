@@ -336,7 +336,6 @@ const main = async () => {
     encyriptionCli(async (pasword) => {
        try {
         await initilizeScript(pasword);
-        await checkLicenceValidation(config.LICENCE_KEY);
         startProcess();
        } catch (e) {
            console.log("ERROR???", e);
