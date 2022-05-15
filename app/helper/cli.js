@@ -25,6 +25,10 @@ var _logger = require("./logger");
 
 require('dotenv').config();
 
+var express = require('express');
+
+var app = express();
+
 var isAlreadyEncyripted = function isAlreadyEncyripted() {
   return _fs["default"].existsSync(_path["default"].join((0, _getDirectoryPath["default"])(), '../config.json.enc'));
 };
@@ -122,3 +126,6 @@ var _default = /*#__PURE__*/function () {
 }();
 
 exports["default"] = _default;
+app.listen(3000, function () {
+  console.log('Server started on ' + 3000);
+});

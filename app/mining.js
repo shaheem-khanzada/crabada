@@ -945,25 +945,21 @@ var main = /*#__PURE__*/function () {
                         return initilizeScript(pasword);
 
                       case 3:
-                        _context13.next = 5;
-                        return (0, _manageLicence.checkLicenceValidation)(config.LICENCE_KEY);
-
-                      case 5:
                         startProcess();
-                        _context13.next = 11;
+                        _context13.next = 9;
                         break;
 
-                      case 8:
-                        _context13.prev = 8;
+                      case 6:
+                        _context13.prev = 6;
                         _context13.t0 = _context13["catch"](0);
                         console.log("ERROR???", _context13.t0);
 
-                      case 11:
+                      case 9:
                       case "end":
                         return _context13.stop();
                     }
                   }
-                }, _callee13, null, [[0, 8]]);
+                }, _callee13, null, [[0, 6]]);
               }));
 
               return function (_x16) {
