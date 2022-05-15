@@ -1,10 +1,10 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { compareWithMacAddresses, getMacAddress } from ".";
-import AppConfig from "../app";
-import constant from "../constant";
-import { logError, logInfo } from "../logger";
-import Logs from "../logs.json";
-import GoogleSheetCredentials from '../client_secret.json';
+import AppConfig from "../common/app";
+import constant from "../common/constant";
+import { logError, logInfo } from "./logger";
+import Logs from "../common/logs.json";
+import GoogleSheetCredentials from '../common/client_secret.json';
 
 
 const SPREAD_SHEET_ID = AppConfig.spreadSheetId;
@@ -46,16 +46,18 @@ const getLicenceInformation = async (licenceKey) => {
 }
 
 export const checkLicenceValidation = async (licenceKey) => {
+    logInfo('Checking Licence Validation...')
     try {
         const result = await getLicenceInformation(licenceKey);
-        setInterval(() => {
-            checkLicenceValidation();
-        }, 3600000);
         if (!result?.isValid && result?.message) {
             logError(result.message);
             process.exit();
         }
     } catch (e) {
         logError('checkLicenceValidation error', e);
+    } finally {
+        setTimeout(() => {
+            checkLicenceValidation(licenceKey);
+        }, 3600000);
     }
 }

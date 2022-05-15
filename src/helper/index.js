@@ -1,6 +1,6 @@
 import { networkInterfaces } from 'os';
-import { logError } from "../logger";
-import Logs from '../logs.json';
+import { logError } from "./logger";
+import Logs from '../common/logs.json';
 
 export const crabsOrderBy = (config) => {
     return config?.CRABS_ORDER_BY === 'time_point' ? 'time_point' : 'battle_point';
@@ -52,4 +52,12 @@ export const sleep = (ms) => {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
     });
+}
+
+export const getHeaders = () => {
+    // return {
+    //     headers: {
+    //         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36",
+    //     }
+    // }
 }

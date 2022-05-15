@@ -15,15 +15,15 @@ var _googleSpreadsheet = require("google-spreadsheet");
 
 var _ = require(".");
 
-var _app = _interopRequireDefault(require("../app"));
+var _app = _interopRequireDefault(require("../common/app"));
 
-var _constant = _interopRequireDefault(require("../constant"));
+var _constant = _interopRequireDefault(require("../common/constant"));
 
-var _logger = require("../logger");
+var _logger = require("./logger");
 
-var _logs = _interopRequireDefault(require("../logs.json"));
+var _logs = _interopRequireDefault(require("../common/logs.json"));
 
-var _client_secret = _interopRequireDefault(require("../client_secret.json"));
+var _client_secret = _interopRequireDefault(require("../common/client_secret.json"));
 
 var SPREAD_SHEET_ID = _app["default"].spreadSheetId;
 var sheetKeys = _app["default"].sheetKeys;
@@ -113,15 +113,13 @@ var checkLicenceValidation = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
+            (0, _logger.logInfo)('Checking Licence Validation...');
+            _context2.prev = 1;
+            _context2.next = 4;
             return getLicenceInformation(licenceKey);
 
-          case 3:
+          case 4:
             result = _context2.sent;
-            setInterval(function () {
-              checkLicenceValidation();
-            }, 3600000);
 
             if (!(result !== null && result !== void 0 && result.isValid) && result !== null && result !== void 0 && result.message) {
               (0, _logger.logError)(result.message);
@@ -133,15 +131,22 @@ var checkLicenceValidation = /*#__PURE__*/function () {
 
           case 8:
             _context2.prev = 8;
-            _context2.t0 = _context2["catch"](0);
+            _context2.t0 = _context2["catch"](1);
             (0, _logger.logError)('checkLicenceValidation error', _context2.t0);
 
           case 11:
+            _context2.prev = 11;
+            setTimeout(function () {
+              checkLicenceValidation(licenceKey);
+            }, 3600000);
+            return _context2.finish(11);
+
+          case 14:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 8]]);
+    }, _callee2, null, [[1, 8, 11, 14]]);
   }));
 
   return function checkLicenceValidation(_x2) {
