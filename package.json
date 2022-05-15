@@ -13,13 +13,13 @@
     "ethers": "^5.6.6",
     "google-spreadsheet": "^3.2.0",
     "path": "^0.12.7",
-    "prompts": "^2.4.2"
-  },
-  "devDependencies": {
+    "prompts": "^2.4.2",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
-    "@babel/plugin-transform-runtime": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-env": "^7.16.11"
+  },
+  "devDependencies": {
     "signcode": "^1.0.0"
   }
 }
