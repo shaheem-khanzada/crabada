@@ -65,6 +65,6 @@ export default async (cb) => {
     logInfo(`Heap: is ~${logParams(heapSize)} GB`);
 };
 
-app.listen(process.env.port || 3000, () => {
-    console.log('Server started on ' + process.env.port || 3000);
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Server started on ' + process.env.PORT || 3000);
 })
