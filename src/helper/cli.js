@@ -5,8 +5,6 @@ import { getHeapStatistics } from 'v8';
 import getDirectoryPath from './getDirectoryPath';
 import { logInfo, logParams } from './logger';
 require('dotenv').config();
-const express = require('express');
-const app = express();
 
 const isAlreadyEncyripted = () => {
     return fs.existsSync(path.join(getDirectoryPath(), '../config.json.enc'));
@@ -64,7 +62,3 @@ export default async (cb) => {
     const heapSize = (getHeapStatistics().heap_size_limit / 1024 / 1024 / 1024).toFixed(2);
     logInfo(`Heap: is ~${logParams(heapSize)} GB`);
 };
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Server started on ' + process.env.PORT || 3000);
-})

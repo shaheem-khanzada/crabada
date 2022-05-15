@@ -9,7 +9,6 @@ import constant from './common/constant';
 import AppConfig from './common/app';
 import { crabsOrderBy, getComparePoints, getFetchingCrabSetting, sleep, getHeaders } from './helper';
 import { pauseScriptWhenReinforcCompleted, removeTeamFromSaveReinforcement, saveReinforcedTeams, canSendReinforcement, blockGameForReinforcement, isGameBlocked, isMiningSafe } from './helper/manageReinforcement';
-import { checkLicenceValidation } from './helper/manageLicence';
 import encryption from './enycription';
 import { decriptPrivateKey, removePrivateKeyFromConfig } from './enycription/encryptDecriptPrivateKey';
 import getDirectoryPath from './helper/getDirectoryPath';
@@ -171,16 +170,17 @@ const reinforcementTransaction = async (team, walletAddress) => {
                 } catch (e) {
                     logError(Logs.REINFORCEMENT_SENT_ERROR, e?.reason || e);
                     if (e.reason && e.reason.includes('GAME:WRONG TURN')) {
-                        await sleep(10000);
+                        break;
+                    }
+                    if (e.reason && e.reason.includes('GAME:WRONG TURN 2')) {
                         break;
                     }
                     if (e.reason && e.reason.includes('GAME:OUT OF TIME')) {
-                        await sleep(10000);
                         break;
                     }
 
                     reinforcementTransactionErrorCount++;
-                    if (reinforcementTransactionErrorCount >= 3) {
+                    if (reinforcementTransactionErrorCount >= 10) {
                         blockGameForReinforcement(team);
                         await sleep(2000);
                         break;
