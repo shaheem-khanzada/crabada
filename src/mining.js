@@ -308,7 +308,7 @@ const initilizeValues = (privateKey) => {
 };
 
 const initilizeScript = async (pasword) => {
-    const dirname = getDirectoryPath();
+    const dirname = getDirectoryPath()
     const paths = ['../config.json', '../config.json.enc'];
     let data = fs.existsSync(path.join(dirname, paths[0]));
     let isAlreadyEncyripted = fs.existsSync(path.join(dirname, paths[1]));
