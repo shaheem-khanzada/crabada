@@ -30,8 +30,6 @@ var _helper = require("./helper");
 
 var _manageReinforcement = require("./helper/manageReinforcement");
 
-var _manageLicence = require("./helper/manageLicence");
-
 var _enycription = _interopRequireDefault(require("./enycription"));
 
 var _encryptDecriptPrivateKey = require("./enycription/encryptDecriptPrivateKey");
@@ -409,7 +407,7 @@ var reinforcementTransaction = /*#__PURE__*/function () {
             reinforcementCrabs = _context7.sent;
 
             if (!(reinforcementCrabs && reinforcementCrabs.length)) {
-              _context7.next = 50;
+              _context7.next = 48;
               break;
             }
 
@@ -417,7 +415,7 @@ var reinforcementTransaction = /*#__PURE__*/function () {
 
           case 9:
             if (!(i < reinforcementCrabs.reverse().length)) {
-              _context7.next = 50;
+              _context7.next = 48;
               break;
             }
 
@@ -450,7 +448,7 @@ var reinforcementTransaction = /*#__PURE__*/function () {
             return (0, _helper.sleep)(5000);
 
           case 27:
-            return _context7.abrupt("break", 50);
+            return _context7.abrupt("break", 48);
 
           case 30:
             _context7.prev = 30;
@@ -458,71 +456,71 @@ var reinforcementTransaction = /*#__PURE__*/function () {
             (0, _logger.logError)(_logs["default"].REINFORCEMENT_SENT_ERROR, (_context7.t0 === null || _context7.t0 === void 0 ? void 0 : _context7.t0.reason) || _context7.t0);
 
             if (!(_context7.t0.reason && _context7.t0.reason.includes('GAME:WRONG TURN'))) {
+              _context7.next = 35;
+              break;
+            }
+
+            return _context7.abrupt("break", 48);
+
+          case 35:
+            if (!(_context7.t0.reason && _context7.t0.reason.includes('GAME:WRONG TURN 2'))) {
               _context7.next = 37;
               break;
             }
 
-            _context7.next = 36;
-            return (0, _helper.sleep)(10000);
-
-          case 36:
-            return _context7.abrupt("break", 50);
+            return _context7.abrupt("break", 48);
 
           case 37:
             if (!(_context7.t0.reason && _context7.t0.reason.includes('GAME:OUT OF TIME'))) {
-              _context7.next = 41;
+              _context7.next = 39;
               break;
             }
 
-            _context7.next = 40;
-            return (0, _helper.sleep)(10000);
+            return _context7.abrupt("break", 48);
 
-          case 40:
-            return _context7.abrupt("break", 50);
-
-          case 41:
+          case 39:
             reinforcementTransactionErrorCount++;
 
-            if (!(reinforcementTransactionErrorCount >= 3)) {
-              _context7.next = 47;
+            if (!(reinforcementTransactionErrorCount >= 10)) {
+              _context7.next = 45;
               break;
             }
 
             (0, _manageReinforcement.blockGameForReinforcement)(team);
-            _context7.next = 46;
+            _context7.next = 44;
             return (0, _helper.sleep)(2000);
 
-          case 46:
-            return _context7.abrupt("break", 50);
+          case 44:
+            return _context7.abrupt("break", 48);
 
-          case 47:
+          case 45:
             i++;
             _context7.next = 9;
             break;
 
-          case 50:
-            _context7.next = 58;
+          case 48:
+            _context7.next = 56;
             break;
 
-          case 52:
-            _context7.prev = 52;
+          case 50:
+            _context7.prev = 50;
             _context7.t1 = _context7["catch"](2);
             getCrabesErrorCount++;
 
             if (!(getCrabesErrorCount < 4)) {
-              _context7.next = 58;
+              _context7.next = 56;
               break;
             }
 
-            _context7.next = 58;
+            _context7.next = 56;
             return reinforcementTransaction(team, walletAddress);
 
-          case 58:
+          case 56:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7, null, [[2, 52], [14, 30]]);
+    }, _callee7, null, [[2, 50], [14, 30]]);
   }));
 
   return function reinforcementTransaction(_x6, _x7) {
